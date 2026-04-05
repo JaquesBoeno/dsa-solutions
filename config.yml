@@ -5,7 +5,6 @@ Questions:
     data:
       options:
         - value: leetcode
-      options:
         - value: others
 
   - key: subject
