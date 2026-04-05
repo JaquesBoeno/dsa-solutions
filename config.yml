@@ -1,0 +1,23 @@
+Questions:
+  - key: source
+    type: select
+    label: "Select the problem source"
+    data:
+      options:
+        - value: leetcode
+
+  - key: subject
+    type: text
+    label: "Write a short description of the solution (imperative tense)"
+    data:
+      min: 1
+      max: 70
+
+TemplateCommit: |
+  [<source>] <subject>
+
+Colors:
+  primary: "6"
+  secondary: "2"
+  green: "2"
+  red: "1"
