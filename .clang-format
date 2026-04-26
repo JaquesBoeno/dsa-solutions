@@ -1,0 +1,41 @@
+---
+BasedOnStyle: LLVM
+
+IndentWidth:  4
+TabWidth:     4
+UseTab:       Always
+
+BreakBeforeBraces: Attach
+
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements:       true
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName:  false
+  AfterOverloadedOperator:      false
+  BeforeNonEmptyParentheses:    false
+
+SpacesInParens: Custom
+SpacesInParensOptions:
+    ExceptDoubleParentheses: false
+    InConditionalStatements: true
+    InCStyleCasts:           true
+    InEmptyParentheses: true
+    Other: true
+
+PointerAlignment: Right
+
+ColumnLimit: 0
+
+AlignConsecutiveDeclarations:
+  Enabled:          true
+  AcrossEmptyLines: false
+  AcrossComments:   false
+
+MaxEmptyLinesToKeep: 2
+EmptyLineBeforeAccessModifier: Always
+
+SpaceBeforeAssignmentOperators: true
+SpaceAfterCStyleCast:           false
+SpacesInAngles:                 Never
+SpacesInSquareBrackets:         false

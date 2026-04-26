@@ -1,8 +1,8 @@
-int numberOfSteps(int num) {
+int numberOfSteps( int num ) {
 	int steps = 0;
-	while (num) {
+	while ( num ) {
 		steps += 1;
-		if (num % 2 == 0)
+		if ( num % 2 == 0 )
 			num /= 2;
 		else
 			num -= 1;

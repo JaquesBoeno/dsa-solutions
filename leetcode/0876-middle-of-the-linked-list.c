@@ -5,12 +5,12 @@
  *     struct ListNode *next;
  * };
  */
-struct ListNode* middleNode(struct ListNode* head) {
+struct ListNode *middleNode( struct ListNode *head ) {
 	int				 i = 0;
 	struct ListNode *a = head, *b = head;
 
-	while (b != NULL) {
-		if (i % 2 == 1) {
+	while ( b != NULL ) {
+		if ( i % 2 == 1 ) {
 			b = b->next;
 			a = a->next;
 		} else {
