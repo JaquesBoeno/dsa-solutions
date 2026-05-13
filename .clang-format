@@ -1,41 +1,78 @@
----
-BasedOnStyle: LLVM
+BasedOnStyle: LLVM  
 
-IndentWidth:  4
-TabWidth:     4
-UseTab:       Always
+# Use tab para toda indentação onde aplicável.
+UseTab: Always 
 
-BreakBeforeBraces: Attach
+# Larguras essenciais de tabulação.
+IndentWidth: 4    # largura lógica da indentação 
+TabWidth: 4       # largura visual do caractere tab 
+ContinuationIndentWidth: 4  # indentação de quebras de linha 
 
-SpaceBeforeParens: Custom
-SpaceBeforeParensOptions:
-  AfterControlStatements:       true
-  AfterFunctionDeclarationName: false
-  AfterFunctionDefinitionName:  false
-  AfterOverloadedOperator:      false
-  BeforeNonEmptyParentheses:    false
+# Alinhamentos e colunas
+ColumnLimit: 120            # 0 desativa quebra por limite de coluna 
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
 
-SpacesInParens: Custom
-SpacesInParensOptions:
-    ExceptDoubleParentheses: false
-    InConditionalStatements: true
-    InCStyleCasts:           true
-    InEmptyParentheses: true
-    Other: true
-
-PointerAlignment: Right
-
-ColumnLimit: 0
 
 AlignConsecutiveDeclarations:
-  Enabled:          true
+  Enabled: true
   AcrossEmptyLines: false
-  AcrossComments:   false
+  AcrossComments: false
 
-MaxEmptyLinesToKeep: 2
-EmptyLineBeforeAccessModifier: Always
+AlignConsecutiveMacros: AcrossEmptyLinesAndComments       
+AlignOperands: Align       # mantém alinhamento de operadores 
+AlignAfterOpenBracket: AlwaysBreak  # quebra e alinha após '(' '[' '{' 
+PointerAlignment: Right     # tipo* nome 
+ReferenceAlignment: Right   # tipo& nome 
 
-SpaceBeforeAssignmentOperators: true
-SpaceAfterCStyleCast:           false
-SpacesInAngles:                 Never
-SpacesInSquareBrackets:         false
+# Quebras e embrulhos
+BreakBeforeBraces: Attach  # chaves na mesma linha do controle 
+AllowShortFunctionsOnASingleLine: Empty  # apenas {} vazios na mesma linha 
+AllowShortIfStatementsOnASingleLine: false  # força quebra em if curtos 
+AllowShortLoopsOnASingleLine: false         # força quebra em loops curtos 
+AlwaysBreakTemplateDeclarations: Yes        # quebra templates longos 
+BinPackArguments: false     # não "empacotar" muitos args na mesma linha 
+BinPackParameters: false    # idem para parâmetros 
+
+# Espaçamentos
+SpaceBeforeParens: ControlStatements  # if/for/while com espaço; chamadas sem 
+SpacesInParens: Custom
+SpacesInParensOptions:
+  ExceptDoubleParentheses: false
+  InConditionalStatements: true
+  InCStyleCasts:           true
+  InEmptyParentheses:      true
+  Other:                   true
+
+SpacesInSquareBrackets: false         # sem espaços internos em colchetes 
+SpaceInEmptyParentheses: false        # f() sem espaço 
+SpacesInAngles: false                 # templates sem espaços <T> 
+SpaceBeforeSquareBrackets: false      # nome[] sem espaço 
+SpaceBeforeAssignmentOperators: true  # espaço antes de =, += etc. 
+SpaceAroundPointerQualifiers: Default  # espaçamento padrão para const* etc. 
+
+# Listas e inicializadores
+Cpp11BracedListStyle: true         # formatação moderna de listas 
+SpaceBeforeRangeBasedForLoopColon: true  # for (auto x : xs) 
+SpaceBeforeCtorInitializerColon: true    # : Base() com espaço 
+
+# Includes
+IncludeBlocks: Regroup
+IncludeIsMainRegex: '([.](cc|c|cpp|cxx|C))'  # mapeia header principal 
+SortIncludes: true
+
+# Comentários e documentação
+ReflowComments: false
+SpacesBeforeTrailingComments: 1  # espaço antes de // trailing 
+
+# Idiomas e padrões
+Language: Cpp
+
+# Regras específicas de alinhamento com tabs
+IndentCaseLabels: true        # case alinhado com switch + indentação por tab 
+IndentCaseBlocks: true        # blocos dentro de case recebem indent 
+DerivePointerAlignment: false # não derivar do código existente 
+DeriveLineEnding: false       # não derivar EOL
+
