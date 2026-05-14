@@ -1,6 +1,3 @@
-#ifndef LEETCODE_H
-#define LEETCODE_H
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,5 +19,3 @@ void lc_free_matrix( int **m, int rows );
 /* Prints array and matrix formatted. */
 void lc_print_array( const int *arr, int len );
 void lc_print_matrix( int **m, int rows, int cols );
-
-#endif /* LEETCODE_H */

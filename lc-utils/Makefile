@@ -1,5 +1,5 @@
 CC     = clang
-CFLAGS = -Wall -Wextra -std=c11 -Iinclude
+CFLAGS = -Wall -Wextra -std=c23 -Iinclude
 SRC    = $(wildcard src/*.c)
 OBJ    = $(patsubst src/%.c, build/%.o, $(SRC))
 LIB    = build/libleetcode.a
