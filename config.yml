@@ -6,17 +6,18 @@ Questions:
       options:
         - value: leetcode
         - value: others
-
-  - key: subject
-    type: text
-    label: "Write a short description of the solution (imperative tense)"
-    data:
-      min: 1
-      max: 70
+    subquestion_condition: leetcode
+    subquestions:
+      - key: ProblemName
+        type: text
+        label: "What problem did you solve?"
+        data:
+          min: 0
+          max: -1
 
 TemplateCommit: |
-  [<source>] <subject>
-
+  [<source>] Added '<ProblemName>' solution
+  
 Colors:
   primary: "6"
   secondary: "2"
