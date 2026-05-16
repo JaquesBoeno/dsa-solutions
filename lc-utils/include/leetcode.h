@@ -12,10 +12,20 @@ PUBLIC Interface — lc_array.c
 int *lc_parse_array( const char *s, int *len );
 
 /* Parses "[[1,2],[3,4]]" → allocated matrix. *rows and *cols populated. */
-// int **lc_parse_matrix( const char *s, int *rows, int *cols );
+int **lc_parse_matrix( const char *s, int *rows, int **cols );
 
 void lc_free_matrix( int **m, int rows );
 
 /* Prints array and matrix formatted. */
 void lc_print_array( const int *arr, int len );
-void lc_print_matrix( int **m, int rows, int cols );
+void lc_print_matrix( int **m, int rows, int *cols );
+
+typedef struct ListNode {
+	int				 val;
+	struct ListNode *next;
+} ListNode;
+
+ListNode *lc_parse_list( const char *s );
+
+void lc_list_free( ListNode *head );
+void lc_list_print( ListNode *head );

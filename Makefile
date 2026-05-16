@@ -2,7 +2,12 @@ CC      = clang
 CFLAGS  = -Wall -Wextra -std=c23 -Ilc-utils/include
 LCLIB   = lc-utils/build/libleetcode.a
 
-PROB    ?= 0035-search-insert-position
+PROB    ?= 0001-two-sum
+
+ifeq ($(findstring -,$(PROB)),)
+  override PROB := $(notdir $(wildcard leetcode/$(PROB)-*))
+endif
+
 MAIN    = leetcode/$(PROB)/main.c
 TARGET  = build/$(PROB)
 TESTER_BIN = build/tester

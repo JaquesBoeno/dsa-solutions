@@ -1,9 +1,13 @@
 #include "leetcode.h"
 
+#include <stdlib.h>
+
 static int count_elements( const char *s ) {
 	const char *p = strchr( s, '[' );
+
 	if ( !p )
 		return 0;
+
 	p++;
 
 	int n			= 0;
@@ -22,6 +26,7 @@ static int count_elements( const char *s ) {
 		}
 		p++;
 	}
+
 	return has_content ? n + 1 : 0;
 }
 
@@ -42,6 +47,51 @@ static int next_int( const char **p, int *out ) {
 	*out = ( int )v;
 	*p	 = end;
 	return 1;
+}
+
+int **lc_parse_matrix( const char *s, int *rows, int **cols ) {
+	*rows = 0;
+
+	if ( !s )
+		return NULL;
+
+	const char *p = strchr( s, '[' );
+	if ( !p )
+		return NULL;
+	p++;
+
+	*rows = count_elements( s );
+
+	if ( *rows == 0 )
+		return NULL;
+
+	int **m;
+	m	  = malloc( sizeof( int * ) * ( *rows ) );
+	*cols = calloc( sizeof( int ), *rows );
+
+	if ( !m || !*cols )
+		return NULL;
+
+	const char *cur = p;
+	for ( int i = 0; i < *rows; i++ ) {
+		cur = strchr( cur, '[' );
+		if ( !cur ) {
+			lc_free_matrix( m, i );
+			return NULL;
+		}
+
+		const char *end = strchr( cur + 1, ']' );
+		if ( !end ) {
+			lc_free_matrix( m, i );
+			return NULL;
+		}
+
+		m[i] = lc_parse_array( cur, &( *cols )[i] );
+
+		cur = end + 1;
+	}
+
+	return m;
 }
 
 int *lc_parse_array( const char *s, int *len ) {
@@ -88,8 +138,6 @@ int *lc_parse_array( const char *s, int *len ) {
 	return arr;
 }
 
-// int **lc_parse_matrix( const char *s, int *rows, int *cols ) {}
-
 void lc_free_matrix( int **m, int rows ) {
 	if ( !m ) {
 		return;
@@ -102,20 +150,28 @@ void lc_free_matrix( int **m, int rows ) {
 	free( m );
 }
 
-void lc_print_array( const int *arr, int len ) {
+static void lc_print_array_without_newline( const int *arr, int len ) {
 	printf( "[" );
 	printf( "%d", arr[0] );
 	for ( int i = 1; i < len; i++ ) {
 		printf( ",%d", arr[i] );
 	}
-	printf( "]\n" );
+	printf( "]" );
 }
 
-void lc_print_matrix( int **m, int rows, int cols ) {
-	printf( "[\n" );
-	for ( int i = 0; i < rows; i++ ) {
-		printf( "\t" );
-		lc_print_array( m[i], cols );
+void lc_print_array( const int *arr, int len ) {
+	lc_print_array_without_newline( arr, len );
+	printf( "\n" );
+}
+
+void lc_print_matrix( int **m, int rows, int *cols ) {
+	printf( "[" );
+
+	lc_print_array_without_newline( m[0], cols[0] );
+
+	for ( int i = 1; i < rows; i++ ) {
+		printf( "," );
+		lc_print_array_without_newline( m[i], cols[i] );
 	}
 
 	printf( "]\n" );
